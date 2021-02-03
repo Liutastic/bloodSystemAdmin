@@ -7,5 +7,16 @@ const service = axios.create({
 
 // 下面配置请求拦截器和响应拦截器
 
+// 请求拦截
+service.interceptors.request.use(config => {
+  config.headers.Authorization = window.localStorage.getItem('token')
+  return config
+})
+
+// 响应拦截
+service.interceptors.response.use(response => response,
+  err => {
+    return Promise.reject(err)
+  })
 
 export default service

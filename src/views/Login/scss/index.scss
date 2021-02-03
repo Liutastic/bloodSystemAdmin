@@ -8,9 +8,12 @@
   // background-color: #333;
 }
 
-.el-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.title-box {
+  width: 100%;
+  text-align: left;
+  p {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #808080;
+  }
 }
-

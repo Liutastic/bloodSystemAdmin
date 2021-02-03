@@ -7,22 +7,17 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/', redirect: '/login'
   },
   {
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
   }
 ]
 
@@ -31,4 +26,16 @@ const router = new VueRouter({
   routes
 })
 
+/**
+ * 挂载路由导航守卫
+ */
+router.beforeEach((to, from, next) => {
+  // 访问登录页面的时候直接放行
+  if (to.path === '/login') return next()
+
+  // 访问其他页面时先检查token是否存在
+  if (!window.localStorage.getItem('token')) return next('/login')
+
+  next()
+})
 export default router

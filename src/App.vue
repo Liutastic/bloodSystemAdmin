@@ -46,5 +46,21 @@ body {
 </style>
 
 <script>
+import { mapMutations } from 'vuex'
+export default {
+  data () {
+    return {
+      params: {
+        testParams: 233
+      }
+    }
+  },
+  mounted () {
+    // this.login({ username: 'ldw2333', password: '123456' })
+  },
+  methods: {
+    ...mapMutations(['login'])
+  }
+}
 
 </script>

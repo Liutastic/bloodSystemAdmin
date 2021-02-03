@@ -8,8 +8,16 @@ export default {
         width: '500px'
       },
       loginForm: {
-        username: '',
-        password: ''
+        username: 'ldw2333',
+        password: '123456'
+      },
+      loginRules: {
+        username: [
+          { trigger: 'blur', required: true, message: '请输入用户名' }
+        ],
+        password: [
+          { trigger: 'blur', required: true, massage: '请输入密码' }
+        ]
       }
     }
   }
