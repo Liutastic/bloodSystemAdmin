@@ -18,7 +18,8 @@ export default {
         password: [
           { trigger: 'blur', required: true, massage: '请输入密码' }
         ]
-      }
+      },
+      fromLoading: false
     }
   }
 }

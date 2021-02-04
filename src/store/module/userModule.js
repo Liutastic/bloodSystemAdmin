@@ -17,7 +17,10 @@ const
       state.userInfo.username = data.username
       state.userInfo.avatar = data.avatar
       state.userInfo.phone = data.phone
+      // token
       window.localStorage.setItem('token', data.token)
+      // avatar
+      window.localStorage.setItem('avatar', data.avatar)
     }
   }
 // actions = {

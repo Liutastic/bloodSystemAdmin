@@ -7,6 +7,7 @@
       </div>
 
       <el-form
+        v-loading="fromLoading"
         :model="loginForm"
         :rules="loginRules"
         ref="loginFormRef"
