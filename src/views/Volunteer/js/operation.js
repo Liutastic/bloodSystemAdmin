@@ -8,6 +8,9 @@ export default {
     handlePageChange (val) {
       this.queryParams.page = val
     },
-
+    visibleHandle (val) {
+      console.log('visible works...')
+      this.formVisible = val
+    }
   }
 }

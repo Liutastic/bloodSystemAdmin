@@ -87,9 +87,12 @@
 import operation from './js/operation'
 import property from './js/property'
 import initial from './js/initial'
-
+// import Form from './components/Form.vue'
 export default {
-  mixins: [operation, property, initial]
+  mixins: [operation, property, initial],
+  // components: {
+  //   Form
+  // }
 }
 </script>
 

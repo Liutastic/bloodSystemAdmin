@@ -8,7 +8,8 @@ export default {
         size: 20,
         searchKey: ''
       },
-      isLoading: false
+      isLoading: false,
+      formVisible: false
     }
   }
 }
