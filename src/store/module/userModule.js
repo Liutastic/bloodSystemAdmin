@@ -21,6 +21,8 @@ const
       window.localStorage.setItem('token', data.token)
       // avatar
       window.localStorage.setItem('avatar', data.avatar)
+      // username
+      window.localStorage.setItem('username', data.username)
     }
   }
 // actions = {

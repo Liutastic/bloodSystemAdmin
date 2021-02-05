@@ -14,7 +14,10 @@ service.interceptors.request.use(config => {
 })
 
 // 响应拦截
-service.interceptors.response.use(response => response,
+service.interceptors.response.use(response => {
+  // console.log(response)
+  return response.data
+},
   err => {
     return Promise.reject(err)
   })
