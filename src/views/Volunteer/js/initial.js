@@ -42,6 +42,12 @@ export default {
         method: 'get',
         params: this.queryParams
       })
+      // 处理志愿者身份证信息
+      let length = content.length
+      for (let i = 0; i < length; i++) {
+        this.volunteerIdList.push({ _id: content[i]._id, IDNo: content[i].IDNo })
+        content[i].IDNo = handleIDNo(Decrypt(content[i].IDNo))
+      }
       this.initialData(content, totalElement, size)
       this.isLoading = false
     },
