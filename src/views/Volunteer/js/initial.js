@@ -28,9 +28,9 @@ export default {
         this.volunteerIdList.push({ _id: content[i]._id, IDNo: content[i].IDNo })
         content[i].IDNo = handleIDNo(Decrypt(content[i].IDNo))
       }
-      console.log('this.volunteerIDList', this.volunteerIdList)
+
       this.initialData(content, totalElement, size)
-      console.log(content)
+
       this.isLoading = false
     },
     // 查找志愿者
@@ -85,6 +85,24 @@ export default {
       this.formVisible = false
       await this.getVolunteerList()
       this.$refs.formRef.resetFields()
+    },
+    // 删除某一个志愿者
+    async deleteVolunteer (id) {
+      let data = await this.$request({
+        url: '/api/volunteer/delete',
+        method: 'post',
+        data: {
+          id
+        }
+      })
+      console.log('delete', data)
+      if (data.code === 200) {
+        this.$successMsg('删除成功!')
+      } else {
+        this.$errorMsg(data.message)
+      }
+      this.formVisible = false
+      await this.getVolunteerList()
     }
   }
 }

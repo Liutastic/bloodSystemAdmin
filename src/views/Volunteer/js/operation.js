@@ -68,7 +68,16 @@ export default {
     },
     // 删除志愿者
     handleDelete (row) {
-      console.log(row)
+      this.$confirm('此操作将会删除该志愿者, 是否继续?', '提示', {
+        confirmButtonText: '确认',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        // 删除
+        this.deleteVolunteer(row._id)
+      }).catch(() => {
+        // 无效果
+      })
     }
   }
 }
