@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import NProgress from 'nprogress'
 import Home from '../views/Home.vue'
 import Login from '../views/Login/index.vue'
 import About from '../views/About.vue'
@@ -37,6 +38,7 @@ const router = new VueRouter({
  * 挂载路由导航守卫
  */
 router.beforeEach((to, from, next) => {
+  NProgress.start()
   // 访问登录页面的时候直接放行
   if (to.path === '/login') return next()
 
@@ -47,5 +49,9 @@ router.beforeEach((to, from, next) => {
   }
 
   next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
 })
 export default router

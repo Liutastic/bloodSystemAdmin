@@ -109,7 +109,7 @@
       <el-pagination
         @size-change="handleVolSizeChange"
         @current-change="handlePageChange"
-        :current-page="queryParams.page + 1"
+        :current-page="queryParams.page"
         :page-sizes="[20, 50, 100, 200]"
         :page-size="20"
         layout="total, sizes, prev, pager, next, jumper"

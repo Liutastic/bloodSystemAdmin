@@ -13,9 +13,11 @@ export default {
     },
     async login (body) {
       this.fromLoading = true
-      const { data, data: { content } } = await this.$request({ url: '/api/user/login', method: 'post', data: body })
-      if (data.code === 200) {
-        this.$store.commit('login', content)
+      const res = await this.$request({ url: '/api/user/login', method: 'post', data: body })
+      console.log(res)
+      if (res.code === 200) {
+        console.log('200')
+        this.$store.commit('login', res.data)
         const { redirect } = this.$route.query
         redirect ? this.$router.push(redirect) : this.$router.push('/home')
         // this.$message({ message: '登录成功!', type: 'success' })
