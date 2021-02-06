@@ -169,6 +169,12 @@
             placeholder="志愿者电话"
           ></el-input>
         </el-form-item>
+        <el-form-item label="备注" label-width="100px" label-position="left">
+          <el-input
+            v-model="infoForm.remark"
+            placeholder="志愿者备注"
+          ></el-input>
+        </el-form-item>
         <el-form-item
           prop="bloodType"
           label="血型"
@@ -187,8 +193,10 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="formVisible = false">取 消</el-button>
-        <el-button type="primary" @click.native="confirmAdd">确 定</el-button>
+        <el-button @click="handleDialogCancel">取 消</el-button>
+        <el-button type="primary" @click.native="handleConfirmBtn"
+          >确 定</el-button
+        >
       </div>
     </el-dialog>
   </div>

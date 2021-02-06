@@ -1,7 +1,9 @@
 export default {
   data () {
     return {
+      initialVolunteerList: [],
       volunteerList: [],
+      volunteerIdList: [],
       queryParams: {
         totalElement: 0,
         page: 1,
@@ -19,8 +21,11 @@ export default {
         bloodType: '',
         address: '',
         phone: '',
-        IDNo: ''
+        IDNo: '',
+        remark: ''
       },
+      // 编辑表单中的身份证号码
+      editIDNo: '',
       bloodTypeList: [
         { label: 'A', value: 'A' },
         { label: 'B', value: 'B' },

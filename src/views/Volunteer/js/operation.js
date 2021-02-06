@@ -10,16 +10,30 @@ export default {
     },
     // 控制表单出现与隐藏
     handleFormVisible (visible, isAdd) {
-      this.formVisible = visible,
-        this.isAdd = isAdd
+      this.formVisible = visible
+      this.isAdd = isAdd
+    },
+    // 处理身份证号码加密问题
+    handleIDNoTrans () {
+      this.volunteerIdList.forEach(ele => {
+        if (ele._id === this.infoForm._id) {
+          this.editIDNo = ele.IDNo
+        }
+      })
     },
     // 处理确定按钮的添加或编辑
     handleConfirmBtn () {
       if (this.isAdd) {
         this.confirmAdd()
       } else {
+        // 处理身份证号码加密问题
         this.confirmEdit()
       }
+    },
+    // 处理对话框取消按钮操作
+    handleDialogCancel () {
+      this.$refs.formRef.resetFields()
+      this.formVisible = false
     },
     // 添加志愿者
     confirmAdd () {
@@ -35,6 +49,8 @@ export default {
     },
     confirmEdit () {
       this.formLoading = true
+      this.handleIDNoTrans()
+
       this.$refs.formRef.validate(valid => {
         if (valid) {
           this.editVolunteer()
@@ -44,9 +60,10 @@ export default {
       })
       this.formLoading = false
     },
-    // 编辑志愿者
+    // 弹出编辑志愿者对话框
     handleEdit (row) {
       this.infoForm = row
+      // this.handleIDNoTrans()
       this.handleFormVisible(true, false)
     },
     // 删除志愿者
